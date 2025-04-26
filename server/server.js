@@ -1,24 +1,24 @@
-import 'dotenv/config'
-import express from 'express'
-import cors from 'cors'
-import connectDB from './configs/mogoDb.js'
-const corsConfig = {
-    origin:"*",
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-}
-//App Config
-const PORT = process.env.PORT || 4000;
+import express from 'express';
+import serverless from 'serverless-http';
+import cors from 'cors';
+import connectDB from '../configs/mongoDb.js';
+
 const app = express();
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+
+// Connect DB
 await connectDB();
 
-// Initialise Middleware
-app.use(express.json());
-app.use(cors(corsConfig));
+// Routes
+app.get('/', (req, res) => {
+    res.send('API Working');
+});
 
-// API Routes
-app.get('/',(req,res)=>res.send("API Working"))
+// Export the serverless handler
+export const handler = serverless(app);
 
-app.listen(PORT,()=>{
-    console.log("Server Running on Port :"+ PORT)
-})
+// (Optional) For local development
+export default app;
