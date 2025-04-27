@@ -1,7 +1,10 @@
 import express from 'express';
-import serverless from 'serverless-http';
 import cors from 'cors';
-import connectDB from '../configs/mongoDb.js';
+import dotenv from 'dotenv'
+dotenv.config();
+
+import connectDB from './configs/mongodb.js';
+const PORT = process.env.PORT || 4000;
 
 const app = express();
 
@@ -17,8 +20,6 @@ app.get('/', (req, res) => {
     res.send('API Working');
 });
 
-// Export the serverless handler
-export const handler = serverless(app);
-
-// (Optional) For local development
-export default app;
+app.listen(PORT, () => {
+  console.log(`Local server running on http://localhost:${PORT}`);
+});
