@@ -4,6 +4,7 @@ import dotenv from  'dotenv'
 dotenv.config()
 import connectDB from './configs/mongodb.js';
 import userRouter from './routes/userRoutes.js';
+import imageRouter from './routes/imageRoutes.js';
 
 const PORT = process.env.PORT || 4000;
 
@@ -20,7 +21,9 @@ await connectDB();
 app.get('/', (req, res) => {
     res.send('API Working');
 });
+app.use(express.json()); 
 app.use('/api/user',userRouter)
+app.use('/api/image',imageRouter)
 
 app.listen(PORT, () => {
   console.log(`Local server running on http://localhost:${PORT}`);

@@ -1,7 +1,21 @@
 import React from 'react'
 import { assets, plans } from '../assets/assets'
-
+import {toast} from 'react-toastify'
 const BuyCredit = () => {
+  const purchase = ()=>{
+    toast.info("Kyu paise barbad kar rahe ho \nAditya ko bolo vo credits increase kar dega free mai",
+      {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light"
+      }
+    );
+  }
   return (
     <div className='min-h-[80vh] text-center pt-14 mb-10 '>
       <button className='border border-gray-400 px-10 py-2 rounded-full mb-6'>Our Plans</button>
@@ -15,7 +29,7 @@ const BuyCredit = () => {
             <p className='mt-6 '>
               <span className='text-3xl font-medium'>${item.price}</span>/{item.credits} credits
             </p>
-            <button className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52'>Purchase</button>
+            <button onClick={(purchase)} className='w-full bg-gray-800 text-white mt-8 text-sm rounded-md py-2.5 min-w-52'>Purchase</button>
           </div>
         ))}
       </div>
