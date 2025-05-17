@@ -128,12 +128,12 @@ Open a Pull Request
 This project is licensed under the MIT License.
 See LICENSE for details.
 
-<div align="center"> Made with ❤️ by Aditya Dabgotra </div> ```
+<div align="center"> Made with ❤️ by Aditya Dabgotra </div> <br><br>
 How to Copy & Start Your Own
-Fork or Clone this repo to your own GitHub account.
+Fork or Clone this repo to your own GitHub account.<br><br>
 
-Update all your-username and your-repo URLs.
+Update all your-username and your-repo URLs.<br>
 
-Generate your Clerk, ClipDrop, and MongoDB credentials and fill in the .env files.
+Generate your Clerk, ClipDrop, and MongoDB credentials and fill in the .env files.<br>
 
-Run npm install and npm run dev as above.
+Run npm install and npm run dev as above.<br>
