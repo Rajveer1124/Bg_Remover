@@ -72,7 +72,7 @@ https://bg-remover-orpin-tau.vercel.app/
     npm install
    ```
    
-   ** Backend**
+   **Backend**
    ```bash
     cd server
     npm install
