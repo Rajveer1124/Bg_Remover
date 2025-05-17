@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/ClipDrop-API-red?style=flat-square" alt="ClipDrop Badge"/>
 </p>
 
-# 🎨 Background Buster
+# 🎨 Background Remover
 
 A sleek, React + Vite web app that lets users sign in with Clerk, upload photos, and—via the ClipDrop API—remove backgrounds. Backed by MongoDB for user data and history.
 
@@ -62,17 +62,17 @@ https://bg-remover-orpin-tau.vercel.app/
 
 1. **Clone the repo**  
    ```bash
-   git clone https://github.com/your-username/your-repo.git
+   git clone https://github.com/AdityaDabgotra/Bg_Remover.git
    cd your-repo
    ```
-2. **Install dependencie**
+2. **Install dependencie** <br>
    **Frontend**
    ```bash
     cd client
     npm install
    ```
    
-   # Backend
+   ** Backend**
    ```bash
     cd server
     npm install
@@ -90,4 +90,49 @@ https://bg-remover-orpin-tau.vercel.app/
      CLERK_WEBHOOK_SECRET = ''
      CLIPDROP_API = ''
    ```
-     
+4. **Run the App**
+   **Frontend**
+   ```bash
+     cd client
+     npm run dev
+   ```
+   **Backend**
+   ```bash
+     cd server
+     npm run start
+   ```
+5.**Open your browser at http://localhost:5173 (Vite’s default).**
+
+## 📂 Usage
+Sign up or log in with your email/password via Clerk.
+
+Upload an image or drag & drop into the uploader.
+
+Click “Remove Background” and watch the magic happen.
+
+Download the result or revisit it later in your History page.
+
+## 🌟 Contributing
+Fork the repo
+
+Create a feature branch: git checkout -b feature/YourFeature
+
+Commit your changes: git commit -m 'Add some feature'
+
+Push to the branch: git push origin feature/YourFeature
+
+Open a Pull Request
+
+## 📜 License
+This project is licensed under the MIT License.
+See LICENSE for details.
+
+<div align="center"> Made with ❤️ by Aditya Dabgotra </div> ```
+How to Copy & Start Your Own
+Fork or Clone this repo to your own GitHub account.
+
+Update all your-username and your-repo URLs.
+
+Generate your Clerk, ClipDrop, and MongoDB credentials and fill in the .env files.
+
+Run npm install and npm run dev as above.
