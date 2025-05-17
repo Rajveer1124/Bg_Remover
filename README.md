@@ -64,3 +64,30 @@ https://bg-remover-orpin-tau.vercel.app/
    ```bash
    git clone https://github.com/your-username/your-repo.git
    cd your-repo
+   ```
+2. **Install dependencie**
+   **Frontend**
+   ```bash
+    cd client
+    npm install
+   ```
+   
+   # Backend
+   ```bash
+    cd server
+    npm install
+   ```
+3. **Setup Environment Variables**
+   **Frontend**
+   ```bash
+     VITE_CLERK_PUBLISHABLE_KEY=''
+     VITE_BACKEND_URL = ''
+   ```
+   
+   **Backend**
+   ```bash
+     MONGODB_URI = ''
+     CLERK_WEBHOOK_SECRET = ''
+     CLIPDROP_API = ''
+   ```
+     
