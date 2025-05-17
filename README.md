@@ -63,7 +63,7 @@ https://bg-remover-orpin-tau.vercel.app/
 1. **Clone the repo**  
    ```bash
    git clone https://github.com/AdityaDabgotra/Bg_Remover.git
-   cd your-repo
+   cd BgRemover
    ```
 2. **Install dependencie** <br>
    **Frontend**
