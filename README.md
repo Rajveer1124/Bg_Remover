@@ -66,6 +66,7 @@ https://bg-remover-orpin-tau.vercel.app/
    cd BgRemover
    ```
 2. **Install dependencie** <br>
+
    **Frontend**
    ```bash
     cd client
@@ -77,7 +78,7 @@ https://bg-remover-orpin-tau.vercel.app/
     cd server
     npm install
    ```
-3. **Setup Environment Variables**
+3. **Setup Environment Variables** <br>
    **Frontend**
    ```bash
      VITE_CLERK_PUBLISHABLE_KEY=''
@@ -90,7 +91,7 @@ https://bg-remover-orpin-tau.vercel.app/
      CLERK_WEBHOOK_SECRET = ''
      CLIPDROP_API = ''
    ```
-4. **Run the App**
+4. **Run the App** <br>
    **Frontend**
    ```bash
      cd client
