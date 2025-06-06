@@ -14,7 +14,9 @@ const Header = () => {
             Remove the <br className='max-md:hidden' /> <span className='bg-gradient-to-r from-violet-600 to-fuchsia-500 bg-clip-text text-transparent'>background</span> from <br className='max-md:hidden' /> images for free.
         </h1>
         <p className='my-6 text-[15px] text-gray-500 '>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br className='max-sm:hidden' /> Lorem Ipsum has been the industry's standard dummy text ever.
+          Aditya’s BG Remover app instantly removes backgrounds from images with precision.
+          <br className='max-sm:hidden' /> Fast, easy, and user-friendly, it’s perfect for creating clean,
+          professional photos in just seconds.
         </p>
         <div>
             <input onChange={e=>removeBg(e.target.files[0])} type="file" accept='image/*' id="upload1" hidden/>
