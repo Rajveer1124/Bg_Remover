@@ -21,7 +21,6 @@ await connectDB();
 app.get('/', (req, res) => {
     res.send('API Working');
 });
-app.use(express.json()); 
 app.use('/api/user',userRouter)
 app.use('/api/image',imageRouter)
 
