@@ -5,8 +5,6 @@ dotenv.config();
 
 const clerkWebhooks = async (req, res) => {
   try {
-    const whook = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
-
     const payload = req.body;
     const headers = {
       "svix-id": req.headers["svix-id"],
@@ -14,62 +12,76 @@ const clerkWebhooks = async (req, res) => {
       "svix-signature": req.headers["svix-signature"],
     };
 
-    const evt = whook.verify(payload, headers);
-    const { data, type } = evt;
-    console.log(type);
+    const wh = new Webhook(process.env.CLERK_WEBHOOK_SECRET);
+
+    const evt = wh.verify(payload.toString(), headers);
+    const { type, data } = evt;
+
+    console.log("Clerk Webhook Type:", type);
+
     switch (type) {
       case "user.created": {
         const userData = {
           clerkId: data.id,
-          email: data.email_addresses[0].email_address,
+          email: data.email_addresses?.[0]?.email_address || "",
           firstName: data.first_name,
           lastName: data.last_name,
           photo: data.image_url,
         };
-        console.log("Creating user:", userData);
+        console.log("✅ Creating user:", userData);
         await userModel.create(userData);
-        return res.status(200).json({ success: true });
+        break;
       }
 
       case "user.updated": {
-        const userData = {
-          email: data.email_addresses[0].email_address,
+        const updateData = {
+          email: data.email_addresses?.[0]?.email_address || "",
           firstName: data.first_name,
           lastName: data.last_name,
           photo: data.image_url,
         };
-        await userModel.findOneAndUpdate({ clerkId: data.id }, userData);
-        return res.status(200).json({ success: true });
+        await userModel.findOneAndUpdate({ clerkId: data.id }, updateData);
+        break;
       }
 
       case "user.deleted": {
         await userModel.findOneAndDelete({ clerkId: data.id });
-        return res.status(200).json({ success: true });
+        break;
       }
 
       default:
-        return res.status(400).json({ success: false, message: "Unhandled event type" });
+        console.warn("⚠️ Unhandled webhook type:", type);
     }
+
+    return res.status(200).json({ success: true });
   } catch (error) {
-    console.error("Webhook error:", error.message);
-    return res.status(500).json({ success: false, message: error.message });
+    console.error("Webhook Error:", error.message);
+    return res.status(400).json({ success: false, message: error.message });
   }
 };
 
 const userCredits = async (req, res) => {
   try {
-    const { clerkId } = req;
-    const userData = await userModel.findOne({ clerkId });
+    const { clerkId } = req.body;
 
-    if (!userData) {
+    if (!clerkId) {
+      return res.status(400).json({ success: false, message: "Missing clerkId" });
+    }
+
+    const user = await userModel.findOne({ clerkId });
+
+    if (!user) {
       return res.status(404).json({ success: false, message: "User not found" });
     }
 
-    res.json({ success: true, credits: userData.creditBalance });
+    return res.status(200).json({
+      success: true,
+      credits: user.creditBalance || 0,
+    });
   } catch (error) {
-    console.error("❌ userCredits error:", error.message);
-    res.status(500).json({ success: false, message: error.message });
+    console.error("userCredits error:", error.message);
+    return res.status(500).json({ success: false, message: error.message });
   }
 };
 
-export { clerkWebhooks, userCredits };
+export { clerkWebhooks ,userCredits };
