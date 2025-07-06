@@ -49,12 +49,8 @@ const clerkWebhooks = async (req, res) => {
         res.json({})
         break;
       }
-
-      default:
-        console.warn("⚠️ Unhandled webhook type:", type);
     }
 
-    return res.status(200).json({ success: true });
   } catch (error) {
     console.error("Webhook Error:", error.message);
     res.json({ success: false, message: error.message });
@@ -65,23 +61,13 @@ const userCredits = async (req, res) => {
   try {
     const { clerkId } = req.body;
 
-    if (!clerkId) {
-      return res.status(400).json({ success: false, message: "Missing clerkId" });
-    }
+    const userData = await userModel.findOne({clerkId})
 
-    const user = await userModel.findOne({ clerkId });
-
-    if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
-    }
-
-    return res.status(200).json({
-      success: true,
-      credits: user.creditBalance || 0,
-    });
+    return res.json({success: true,credits: user.creditBalance});
+    
   } catch (error) {
-    console.error("userCredits error:", error.message);
-    return res.status(500).json({ success: false, message: error.message });
+    console.error(error.message);
+    return res.json({ success: false, message: error.message });
   }
 };
 
