@@ -128,7 +128,7 @@ Open a Pull Request
 This project is licensed under the MIT License.
 See LICENSE for details.
 
-<div align="center"> Made with ❤️ by Aditya Dabgotra </div> <br><br>
+<div align="center"> Made with ❤️ by Rajveer </div> <br><br>
 How to Copy & Start Your Own
 Fork or Clone this repo to your own GitHub account.<br><br>
 
